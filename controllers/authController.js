@@ -51,8 +51,7 @@ export const loginUser = async (req, res) => {
 
     const user = await User.findOne({ email });
 
-    if (!user)
-      return res.status(401).json({ message: "Invalid credentials" });
+    if (!user) return res.status(401).json({ message: "Invalid credentials" });
 
     if (user.status !== "active")
       return res.status(403).json({ message: "User is inactive" });
