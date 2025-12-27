@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
+import videoRoutes from "./routes/videoRoutes.js";
+import courseRoutes from "./routes/courseRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -14,6 +16,8 @@ app.use(express.json());
 
 // ❌ DO NOT put protect here
 app.use("/api/auth", authRoutes);
+app.use("/api/videos", videoRoutes);
+app.use("/api/courses", courseRoutes);
 
 app.get("/", (req, res) => {
   res.send("API running");
